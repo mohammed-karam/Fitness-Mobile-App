@@ -33,7 +33,7 @@ fun TextFieldComponent(@DrawableRes icon: Int, label: String, value: String, onV
         isError = error != null,
         modifier = Modifier.fillMaxWidth(),
         colors = TextFieldDefaults.colors(Color.White),
-        textStyle = TextStyle(color =Color.Black),
+        textStyle = TextStyle(color =Color.White),
         shape = MaterialTheme.shapes.large,
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
         singleLine = true

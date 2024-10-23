@@ -25,7 +25,7 @@ import com.example.healthyfitness.presentation.navigation.NavRoutes
 import com.example.healthyfitness.presentation.screens.notification.components.NotificationItem
 import com.example.healthyfitness.presentation.screens.notification.components.Banner
 
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "SuspiciousIndentation")
 @Composable
 fun Notifications(itemsList: List<String> = (1..10).map { "Item $it" },signUpRepository: SignUpRepository) {
     val navController = rememberNavController()

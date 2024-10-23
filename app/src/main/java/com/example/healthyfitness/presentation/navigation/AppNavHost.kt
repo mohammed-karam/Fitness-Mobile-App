@@ -2,7 +2,7 @@ package com.example.healthyfitness.presentation.navigation
 
 import BackExerciseListScreen
 import BackExerciseViewModel
-import com.example.healthyfitness.presentation.screens.main_screen.ExerciseSelectionScreen
+import ExerciseSelectionScreen
 import SignUpViewModelFactory
 import android.content.Context
 import android.os.Build

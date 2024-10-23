@@ -132,7 +132,7 @@ fun LoginScreen(
                             error = validationErrors["email"]
                         )
                         if (validationErrors.containsKey("email")) {
-                            Text(validationErrors["email"] ?: "", color = Color.Red)
+                            Text(validationErrors["email"] ?: "",color =MaterialTheme.colorScheme.error,style = TextStyle(fontSize = 15.sp, fontFamily = arvoFontFamily), modifier = Modifier.padding(4.dp))
                         }
                         Spacer(modifier = Modifier.height(18.dp))
 
@@ -147,7 +147,7 @@ fun LoginScreen(
                             error = validationErrors["password"]
                         )
                         if (validationErrors.containsKey("password")) {
-                            Text(validationErrors["password"] ?: "", color = Color.Red)
+                            Text(validationErrors["password"] ?: "",color =MaterialTheme.colorScheme.error,style = TextStyle(fontSize = 15.sp, fontFamily = arvoFontFamily), modifier = Modifier.padding(4.dp))
                         }
 
                         Spacer(modifier = Modifier.height(18.dp))

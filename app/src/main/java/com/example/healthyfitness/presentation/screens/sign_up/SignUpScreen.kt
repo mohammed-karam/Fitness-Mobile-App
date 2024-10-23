@@ -150,7 +150,7 @@ fun SignUpScreen(viewModel: SignUpViewModel = viewModel(),
                             error = validationErrors["firstName"]
                         )
                         if (validationErrors.containsKey("firstName")) {
-                            Text(validationErrors["firstName"] ?: "", color = Color.Red)
+                            Text(validationErrors["firstName"] ?: "",color =MaterialTheme.colorScheme.error,style = TextStyle(fontSize = 15.sp, fontFamily = arvoFontFamily), modifier = Modifier.padding(4.dp))
                         }
 
                         Spacer(modifier = Modifier.height(18.dp))
@@ -163,7 +163,7 @@ fun SignUpScreen(viewModel: SignUpViewModel = viewModel(),
                                 viewModel.clearFieldError("lastName")},
                                     error = validationErrors["lastName"])
                         if (validationErrors.containsKey("lastName")) {
-                            Text(validationErrors["lastName"] ?: "", color = Color.Red)
+                            Text(validationErrors["lastName"] ?: "",color =MaterialTheme.colorScheme.error,style = TextStyle(fontSize = 15.sp, fontFamily = arvoFontFamily), modifier = Modifier.padding(4.dp))
                         }
                         Spacer(modifier = Modifier.height(18.dp))
 
@@ -178,7 +178,7 @@ fun SignUpScreen(viewModel: SignUpViewModel = viewModel(),
                             error = validationErrors["email"]
                         )
                         if (validationErrors.containsKey("email")) {
-                            Text(validationErrors["email"] ?: "", color = Color.Red)
+                            Text(validationErrors["email"] ?: "",color =MaterialTheme.colorScheme.error,style = TextStyle(fontSize = 15.sp, fontFamily = arvoFontFamily), modifier = Modifier.padding(4.dp))
                         }
                         Spacer(modifier = Modifier.height(18.dp))
 
@@ -193,7 +193,7 @@ fun SignUpScreen(viewModel: SignUpViewModel = viewModel(),
                             error = validationErrors["password"]
                         )
                         if (validationErrors.containsKey("password")) {
-                            Text(validationErrors["password"] ?: "", color = Color.Red)
+                            Text(validationErrors["password"] ?: "",color =MaterialTheme.colorScheme.error,style = TextStyle(fontSize = 15.sp, fontFamily = arvoFontFamily), modifier = Modifier.padding(4.dp))
                         }
 
                         Spacer(modifier = Modifier.height(18.dp))
@@ -263,7 +263,7 @@ fun SignUpScreen(viewModel: SignUpViewModel = viewModel(),
                                     }
                                     result.isFailure -> {
                                         val exception = result.exceptionOrNull()
-                                        Text("Sign up failed: ${exception?.message}", color = Color.Red)
+                                        Text("Sign up failed: ${exception?.message}",color =MaterialTheme.colorScheme.error,style = TextStyle(fontSize = 10.sp, fontFamily = arvoFontFamily))
                                     }
                                 }
                             }
