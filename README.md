@@ -33,11 +33,16 @@
 </table>
 
 ## 📸 App Screenshots & Visual Design
-
-Here are some screenshots of the Fitness Tracker App:
- <h1><a href="https://github.com/user-attachments/assets/96408181-6f1f-4255-b5aa-a48849c72080">View Project Video</a></h1>
-
 <p align="center">
+  <span style="font-size: 1.5em; font-weight: bold;">🎥 Watch the Project Video</span>
+</p>
+<p align="center">
+  <a href="https://github.com/user-attachments/assets/1318c6ea-cdfd-4df1-92fa-5c5a2fff4bf4" target="_blank" style="text-decoration: none;">
+    <img src="https://github.com/user-attachments/assets/b5b7b963-c904-41ae-b5b0-bfa375f9f1c3" alt="Fitness Tracker Video" width="300" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);"/>
+  </a>
+</p>
+
+
   <table>
     <tr>
       <td><img src="https://github.com/user-attachments/assets/f275b9e8-8cae-4d73-b540-b34a55556dc0" alt="Picture1" width="300"/></td>
