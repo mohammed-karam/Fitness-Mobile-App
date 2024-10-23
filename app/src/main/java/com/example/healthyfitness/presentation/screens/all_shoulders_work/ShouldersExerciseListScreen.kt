@@ -22,7 +22,7 @@ fun ShouldersExerciseListScreen(viewModel: ShouldersExerciseViewModel = viewMode
     val errorMessage by viewModel.errorMessage.collectAsState()
 
     LaunchedEffect(Unit) {
-        viewModel.fetchExercises()
+         viewModel.fetchExercises()
     }
         Box(
             modifier = Modifier
