@@ -23,7 +23,7 @@ class SignUpViewModel(private val repository: SignUpRepository) : ViewModel() {
         }
 
         viewModelScope.launch {
-            _signUpResult.value = repository.signUp(firstName, lastName, email, password)
+                _signUpResult.value = repository.signUp(firstName, lastName, email, password)
         }
     }
 

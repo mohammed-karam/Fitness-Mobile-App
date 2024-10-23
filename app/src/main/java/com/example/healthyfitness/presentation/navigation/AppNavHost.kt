@@ -49,6 +49,7 @@ import com.example.healthyfitness.presentation.screens.login_screen.LoginScreen
 import com.example.healthyfitness.presentation.screens.login_screen.LoginViewModel
 import com.example.healthyfitness.presentation.screens.viewmodels.SignUpViewModel
 import com.example.healthyfitness.presentation.utils.LogInViewModelFactory
+//import kotlinx.coroutines.flow.internal.NoOpContinuation.context
 
 
 //class MainActivity : ComponentActivity() {
@@ -86,7 +87,7 @@ fun MainScreen() {
     val backVM: BackExerciseViewModel = viewModel()
 
     val apiService = RetrofitInstance.create()
-    val repository = SignUpRepository(apiService)
+    val repository = SignUpRepository(apiService,sharedPreferences)
     val logrepository = LoginRepository(apiService)
 
     val signViewModel: SignUpViewModel = viewModel(
@@ -196,7 +197,7 @@ fun MainScreen() {
             }
 
             composable(NavRoutes.ExerciseSelection.route) {
-                ExerciseSelectionScreen() { selectedExercise ->
+                ExerciseSelectionScreen(signUpRepository = repository) { selectedExercise ->
                     when (selectedExercise) {
                         "Shoulder" -> navController.navigate(NavRoutes.ShouldersExerciseList.route)
                         "Back" -> navController.navigate(NavRoutes.BackExerciseList.route)

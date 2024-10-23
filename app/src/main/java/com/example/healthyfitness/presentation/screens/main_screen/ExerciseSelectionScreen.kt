@@ -34,7 +34,7 @@ fun ExerciseSelectionScreen(onExerciseSelected: (String) -> Unit) {
 
         LazyColumn {
             items(exercises) { exercise ->
-                ExerciseCard(exercise) { selectedExercise ->
+                ExerciseButton(exercise) { selectedExercise ->
                     onExerciseSelected(selectedExercise)
                 }
 
@@ -46,7 +46,7 @@ fun ExerciseSelectionScreen(onExerciseSelected: (String) -> Unit) {
 
 
 @Composable
-fun ExerciseCard(exerciseName: String, onExerciseSelected: (String) -> Unit) {
+fun ExerciseButton(exercise: String, onClick: (String) -> Unit) {
     Box(modifier = Modifier.size(365.dp)) {
         Card(
             modifier = Modifier
@@ -65,12 +65,12 @@ fun ExerciseCard(exerciseName: String, onExerciseSelected: (String) -> Unit) {
                 modifier = Modifier
                     .padding(12.dp)
                     .fillMaxSize()
-                    .clickable { onExerciseSelected(exerciseName) },
+                    .clickable { onClick(exercise) },
 
                 ) {
 
                 Text(
-                    text = exerciseName,
+                    text = exercise,
                     color = MaterialTheme.colorScheme.onSecondary,
                     style = MaterialTheme.typography.headlineMedium,
 
@@ -78,7 +78,7 @@ fun ExerciseCard(exerciseName: String, onExerciseSelected: (String) -> Unit) {
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
-                    text = "Some $exerciseName Workout Exercises For You",
+                    text = "Some $exercise Workout Exercises For You",
                     color = MaterialTheme.colorScheme.onTertiary,
                     style = MaterialTheme.typography.bodyMedium.copy(fontSize = 20.sp),
                     modifier = Modifier
