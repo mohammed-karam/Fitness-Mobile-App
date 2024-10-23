@@ -2,7 +2,7 @@ package com.example.healthyfitness.presentation.navigation
 
 import BackExerciseListScreen
 import BackExerciseViewModel
-import ExerciseSelectionScreen
+import com.example.healthyfitness.presentation.screens.main_screen.ExerciseSelectionScreen
 import SignUpViewModelFactory
 import android.content.Context
 import android.os.Build
@@ -275,7 +275,7 @@ fun MainScreen() {
                 }
             }
             composable(NavRoutes.NotificationList.route) {
-                Notifications()
+                Notifications(signUpRepository = repository)
             }
             composable(NavRoutes.HomeScreen1.route) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {

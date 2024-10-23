@@ -1,3 +1,5 @@
+package com.example.healthyfitness.presentation.screens.main_screen
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -14,25 +16,26 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.toUpperCase
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import coil.compose.rememberAsyncImagePainter
 import com.example.healthyfitness.R
 import com.example.healthyfitness.data.data_source.repository.SignUpRepository
+import com.example.healthyfitness.presentation.navigation.NavRoutes
 import com.example.healthyfitness.presentation.theme.HealthyFitnessTheme
-import java.util.Locale
 
 
 @Composable
-fun ExerciseSelectionScreen(signUpRepository: SignUpRepository,onExerciseSelected: (String) -> Unit) {
-    // List of exercises
+fun ExerciseSelectionScreen(signUpRepository: SignUpRepository,onExerciseSelected: (String) -> Unit) { // List of exercises
     val exercises = listOf("Shoulder", "Back", "Cardio", "Neck")
     val firstName = remember { mutableStateOf(signUpRepository.getFirstName()) }
+    val photoUrl = remember { mutableStateOf(signUpRepository.getPhotoUrl()) }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -43,13 +46,26 @@ fun ExerciseSelectionScreen(signUpRepository: SignUpRepository,onExerciseSelecte
 Row (modifier = Modifier
     .padding(8.dp),
     horizontalArrangement = Arrangement.Start){
-    Image(
-        painter = painterResource(R.drawable.logo_man),
-        contentDescription = "",
-        modifier = Modifier
-            .shadow(elevation = 5.dp, shape = RoundedCornerShape(100.dp))
-            .clip(CircleShape)
-            .size(80.dp))
+    if (photoUrl.value != null) {
+        Image(
+            painter = rememberAsyncImagePainter(photoUrl.value),
+            contentDescription = "Profile Image",
+            modifier = Modifier
+                .shadow(elevation = 5.dp, shape = RoundedCornerShape(100.dp))
+                .clip(CircleShape)
+                .size(50.dp)
+        )
+    } else {
+        Image(
+            painter = painterResource(R.drawable.logo_man),
+            contentDescription = "Profile Image",
+            modifier = Modifier
+                .shadow(elevation = 5.dp, shape = RoundedCornerShape(100.dp))
+                .clip(CircleShape)
+                .size(80.dp)
+        )
+    }
+
     Column {
         Text(modifier = Modifier.align(Alignment.Start).padding(start = 12.dp, top = 8.dp),
             text = "Hello, ${firstName.value}!",
@@ -59,10 +75,13 @@ Row (modifier = Modifier
             style = TextStyle(fontFamily = MaterialTheme.typography.bodyMedium.fontFamily, fontSize = 24.sp, color = MaterialTheme.colorScheme.primary))
     }
 }
-        LazyColumn {
+        LazyColumn(  modifier = Modifier
+            .weight(2f)
+            ) {
             items(exercises) { exercise ->
                 ExerciseButton(exercise) { selectedExercise ->
                     onExerciseSelected(selectedExercise)
+
                 }
 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -70,7 +89,6 @@ Row (modifier = Modifier
         }
     }
 }
-
 
 @Composable
 fun ExerciseButton(exercise: String, onClick: (String) -> Unit) {
@@ -127,15 +145,15 @@ fun ExerciseButton(exercise: String, onClick: (String) -> Unit) {
                 .fillMaxHeight()
         )
 
+
     }
+
 }
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 private fun PreviewExerciseSelectionScreen() {
     HealthyFitnessTheme {
-//        ExerciseSelectionScreen() {
-//
-//        }
+
     }
 }

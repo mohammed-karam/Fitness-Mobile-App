@@ -15,7 +15,7 @@ class SignUpRepository(private val authApi: ApiService,
                 response.body()?.let { signUpResponse ->
                     prefs.edit().putString("first_name", firstName).apply()
                     prefs.edit().putString("auth_token", signUpResponse.token).apply()
-
+                    prefs.edit().putString("photo_url", signUpResponse.photo).apply()
                     Result.success(signUpResponse)
                 } ?: Result.failure(Exception("Sign up failed: Empty response body"))
             } else {
@@ -27,5 +27,14 @@ class SignUpRepository(private val authApi: ApiService,
     }
     fun getFirstName(): String? {
         return prefs.getString("first_name", "User")
+    }
+    fun getPhotoUrl(): String?{
+        return prefs.getString("photo_url",null)
+
+    }
+    fun clearLoginState() {
+        val editor = prefs.edit()
+        editor.putBoolean("isLoggedIn", false)
+        editor.apply()
     }
 }
