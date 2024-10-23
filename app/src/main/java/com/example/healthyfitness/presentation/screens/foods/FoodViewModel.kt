@@ -15,7 +15,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class FoodViewModel : ViewModel() {
-    val _food = MutableStateFlow<List<FoodItem>>(emptyList())
+    private val _food = MutableStateFlow<List<FoodItem>>(emptyList())
     val food = _food.asStateFlow()
     private var foodApiService: FoodService
     private var foodDao = FitnessDatabase.getDaoInstance(MyApplication.getApplicationContext())
@@ -28,10 +28,10 @@ class FoodViewModel : ViewModel() {
 
         foodApiService = retrofit.create(FoodService::class.java)
 
-        getfood()
+        getFood()
     }
 
-    private fun getfood() {
+    private fun getFood() {
         viewModelScope.launch {
             try {
                 val allEndpoint = getAllFood()
@@ -46,7 +46,7 @@ class FoodViewModel : ViewModel() {
     private suspend fun getAllFood() = withContext(Dispatchers.IO) {
         try {
             val foods = foodApiService.getAllFood()
-            val foodItems = foods.results ?: emptyList() // Handle potential null
+            val foodItems = foods.results ?: emptyList()
 
             val foodDatabaseItem = foodItems.toDatabaseItems()
             foodDao.insertAllFood(foodDatabaseItem)
